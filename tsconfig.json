@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"],
+      
+      "@appComponents/*":       ["components/*"],
+      "@appHelpers/*":          ["helpers/*"],
+      "@appLib/*":              ["lib/*"],
+
+      "@uiTheme/*":             ["themes/jn-2025/ui/*"],
+      "@uiTheme/atoms/*":       ["themes/jn-2025/ui/components/atoms/*"],
+      "@uiTheme/molecules/*":   ["themes/jn-2025/ui/components/molecules/*"],
+      "@uiTheme/compounds/*":   ["themes/jn-2025/ui/components/compounds/*"],
+      "@uiTheme/organisms/*":   ["themes/jn-2025/ui/components/organisms/*"],
+      "@uiTheme/templates/*":   ["themes/jn-2025/ui/components/templates/*"],
+      "@uiTheme/utils/*":       ["themes/jn-2025/ui/components/utils/*"],
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
