@@ -1,16 +1,16 @@
 import Link from "next/link";
 
-// import MainHeader from "@/components/header";
-// import Profile from "@appComponents/profile";
-
+import MainHeader from "@/components/header";
 import MainHeaderClient from "@/components/header-client";
+
+import Profile from "@appComponents/profile";
 import ProfileClient from "@/components/profile-client";
 
 export default function Home() {
 
   return (<>
 
-    {/* <MainHeader /> */}
+    <MainHeader />
     <MainHeaderClient />  
 
     <hr />
@@ -25,7 +25,7 @@ export default function Home() {
       </li>
     </ul>
     
-    {/* <Profile /> */}
+    <Profile />
     <ProfileClient />
 
   </>);

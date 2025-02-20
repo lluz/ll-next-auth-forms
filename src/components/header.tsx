@@ -1,13 +1,14 @@
-// 'use client'
-
 import Image from 'next/image';
-import { authClient } from '@appLib/auth2/auth-client';
 
-import { SignInAction, SignOutAction } from '@appLib/auth2/actions';
+import { getSession } from "@appLib/auth2";
 
-export default function MainHeader() {
+import { SignInAction, SignOutAction } from "@/lib/auth2/actions-server";
 
-  const { data: session } = authClient.useSession();
+export default async function MainHeader() {
+
+  const session = await getSession();
+
+  console.log("----------------------MainHeader", session);
 
   let authContent: React.ReactNode;
   
@@ -15,7 +16,7 @@ export default function MainHeader() {
 
     authContent = (
       <>
-        <SignOutAction />
+        <h1>MainHeader --- Welcome {session.user.name}</h1>
         <Image src={session.user.image || ''} width={60} height={60} alt={'avatar'} />
       </>
     );
@@ -24,7 +25,7 @@ export default function MainHeader() {
   else {
 
     authContent = (
-      <SignInAction />
+      <div>MainHeader --- Not authenticated</div>
     );
 
   }
@@ -32,6 +33,15 @@ export default function MainHeader() {
   return (
     <fieldset>
       {authContent}
+
+      <hr />
+      
+      {!session?.user ? (
+        <SignInAction />
+      ) : (
+        <SignOutAction />
+      )}
+
     </fieldset>
   );
 }

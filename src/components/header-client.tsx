@@ -3,11 +3,7 @@
 import Image from 'next/image';
 import { authClient } from '@appLib/auth2/auth-client';
 
-// import { SignInAction, SignOutAction } from '@appLib/auth2/actions';
-
 export default function MainHeaderClient() {
-
-  // const { data: session } = authClient.useSession();
 
   const { 
     data: session, 
@@ -22,8 +18,7 @@ export default function MainHeaderClient() {
 
     authContent = (
       <>
-        {/* <SignOutAction /> */}
-
+        <h1>MainHeaderClient --- Welcome {session.user.name}</h1>
         <button onClick={async () => {
           await authClient.signOut({
             fetchOptions: {
@@ -44,8 +39,7 @@ export default function MainHeaderClient() {
 
     authContent = (
       <>
-        {/* <SignInAction /> */}
-
+        <h1>MainHeaderClient --- no no no</h1>
         <button onClick={async () => {
           await authClient.signIn.social({
             provider: "github",

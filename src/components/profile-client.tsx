@@ -14,14 +14,19 @@ export default function ProfileClient() {
   if (session?.user) {
     return (
       <>
-        <div>From client: {JSON.stringify(session.user)}</div>
+      <hr />
+      <hr />
+        <div>ProfileClient --------- From client: {JSON.stringify(session.user)}</div>
       </>
     );
   }
 
   return (
     <>
-      <div>---user is NOT signed in</div>
+
+      <hr />
+      <hr />
+      <div>ProfileClient --------- user is NOT signed in</div>
     </>
   );
 

@@ -1,22 +1,24 @@
-'use client'
+import { getSession } from "@appLib/auth2";
 
-import { useSession } from 'next-auth/react';
+export default async function Profile() {
 
-export default function Profile() {
-
-  const session = useSession();
-
-  if (session.data?.user) {
+  const session = await getSession();
+  
+  if (session?.user) {
     return (
       <>
-        <div>From client: {JSON.stringify(session.data.user)}</div>
+      <hr />
+      <hr />
+        <div>Profile --- From client: {JSON.stringify(session?.user)}</div>
       </>
     );
   }
 
   return (
     <>
-      <div>---user is NOT signed in</div>
+      <hr />
+      <hr />
+      <div>Profile --- user is Signed Out</div>
     </>
   );
 

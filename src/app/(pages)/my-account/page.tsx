@@ -1,21 +1,20 @@
 import Link from "next/link";
 
-import { authClient } from "@/lib/auth2/auth-client" // import the auth client
+import { getSession } from "@appLib/auth2";
 
-// import MainHeader from "@/components/header";
-// import Profile from "@appComponents/profile";
-
+import MainHeader from "@/components/header";
 import MainHeaderClient from "@/components/header-client";
+
+import Profile from "@appComponents/profile";
 import ProfileClient from "@/components/profile-client";
 
 export default async function Page_MyAccount() {
 
- 
-  const { data: session, error } = await authClient.getSession();
+  const session = await getSession();
 
   return (<>
 
-    {/* <MainHeader /> */}
+    <MainHeader />
     <MainHeaderClient />
     
     <hr />
@@ -32,24 +31,24 @@ export default async function Page_MyAccount() {
 
     <hr />
 
+    {session?.user && (
+    <div>
+      USER logged in: {session.user.email} <br />
+    </div>
+    )}
+    
+    <hr />
+
     {session?.user ? (
-      <div>
-        USER logged in: {session.user.email} <br />
-      </div>
-      ) : null}
-      
-      <hr />
+      <div>{JSON.stringify(session.user)}</div>
+    ) : (
+      <div>Page_MyAccount - Signed Out ?????</div>
+    )}
 
-      {session?.user ? (
-        <div>{JSON.stringify(session.user)}</div>
-      ) : (
-        <div>Signed Out</div>
-      )}
+    <hr />
 
-      <hr />
-
-      {/* <Profile /> */}
-      <ProfileClient />
+    <Profile />
+    <ProfileClient />
 
   </>);
 
