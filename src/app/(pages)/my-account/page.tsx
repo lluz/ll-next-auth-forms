@@ -1,16 +1,22 @@
 import Link from "next/link";
 
-import { auth } from "@appLib/auth/auth";
-import Profile from "@appComponents/profile";
-import MainHeader from "@/components/header";
+import { authClient } from "@/lib/auth2/auth-client" // import the auth client
+
+// import MainHeader from "@/components/header";
+// import Profile from "@appComponents/profile";
+
+import MainHeaderClient from "@/components/header-client";
+import ProfileClient from "@/components/profile-client";
 
 export default async function Page_MyAccount() {
 
-  const session = await auth();
+ 
+  const { data: session, error } = await authClient.getSession();
 
   return (<>
 
-    <MainHeader />
+    {/* <MainHeader /> */}
+    <MainHeaderClient />
     
     <hr />
     <hr />
@@ -20,7 +26,7 @@ export default async function Page_MyAccount() {
 
     <ul>
       <li>
-        <Link href="/"><u>Back</u></Link>
+      go to <Link href="/"><u>HOME</u></Link>
       </li>
     </ul>
 
@@ -41,7 +47,9 @@ export default async function Page_MyAccount() {
       )}
 
       <hr />
-      <Profile />
+
+      {/* <Profile /> */}
+      <ProfileClient />
 
   </>);
 

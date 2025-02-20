@@ -1,13 +1,13 @@
 // 'use client'
 
 import Image from 'next/image';
-import { auth } from '@appLib/auth/auth';
+import { authClient } from '@appLib/auth2/auth-client';
 
-import { SignInAction, SignOutAction } from '@appLib/auth/actions';
+import { SignInAction, SignOutAction } from '@appLib/auth2/actions';
 
-export default async function MainHeader() {
+export default function MainHeader() {
 
-  const session = await auth();
+  const { data: session } = authClient.useSession();
 
   let authContent: React.ReactNode;
   
