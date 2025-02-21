@@ -1,15 +1,15 @@
-import { getSession } from "@appLib/auth2";
+import { getSessionByCookie } from "@appLib/auth2";
 
 export default async function Profile() {
 
-  const session = await getSession();
+  const session = await getSessionByCookie();
   
-  if (session?.user) {
+  if (session) {
     return (
       <>
       <hr />
       <hr />
-        <div>Profile --- From client: {JSON.stringify(session?.user)}</div>
+        <div>Profile --- From server: {JSON.stringify(session)}</div>
       </>
     );
   }

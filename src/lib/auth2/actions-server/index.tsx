@@ -1,9 +1,7 @@
-import { auth, getSession } from "@appLib/auth2";
+import { auth } from "@appLib/auth2";
 import { headers } from "next/headers";
 
 export async function SignInAction() {
-
-  const session = await getSession();
 
   return (
     <form
@@ -14,20 +12,19 @@ export async function SignInAction() {
           body: {
             provider: "github",
           },
-          callbackURL: "/my-account", 
-          errorCallbackURL: "/error",
+          // callbackURL: "/my-account", 
+          // errorCallbackURL: "/error",
         });
 
       }}
     >
       <button type="submit">??? Sign IN__</button>
     </form>
-  )
+  );
+
 }
  
 export async function SignOutAction() {
-
-  const session = await getSession();
 
   return (
     <form
@@ -36,12 +33,13 @@ export async function SignOutAction() {
         
         await auth.api.signOut({
           headers: await headers(),
-          redirectURL: "/logged-out",
+          redirectURL: "/",
         });
 
       }}
     >
       <button type="submit">??? Sign OUT__</button>
     </form>
-  )
+  );
+
 }

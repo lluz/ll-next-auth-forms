@@ -23,7 +23,7 @@ export default function MainHeaderClient() {
           await authClient.signOut({
             fetchOptions: {
               onSuccess: () => {
-                window.location.href = "/logged-out"; // redirect to login page
+                window.location.href = "/logged-out";
               },
             },
           });
@@ -43,7 +43,7 @@ export default function MainHeaderClient() {
         <button onClick={async () => {
           await authClient.signIn.social({
             provider: "github",
-            callbackURL: "/my-account", 
+            // callbackURL: "/my-account", 
             errorCallbackURL: "/error",
         });
         }}>Sign INnn</button>
