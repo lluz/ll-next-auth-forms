@@ -34,6 +34,7 @@ export default async function Page_MyAccount() {
       
       <hr />
 
+      server component page
       {session?.user ? (
         <div>{JSON.stringify(session.user)}</div>
       ) : (

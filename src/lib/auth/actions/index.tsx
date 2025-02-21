@@ -1,14 +1,15 @@
-import { signIn, signOut } from "@appLib/auth/auth";
+import * as auth from "@appLib/auth/auth";
  
 export function SignInAction() {
   return (
     <form
       action={async () => {
         "use server"
-        await signIn("github", { redirectTo: "/" })
+        // await signIn("github", { redirectTo: "/" })
+        await auth.signIn('github');
       }}
     >
-      <button type="submit">Sign IN</button>
+      <button type="submit">Sign IN_</button>
     </form>
   )
 }
@@ -18,10 +19,10 @@ export function SignOutAction() {
     <form
       action={async () => {
         "use server"
-        await signOut();
+        await auth.signOut();
       }}
     >
-      <button type="submit">Sign OUT</button>
+      <button type="submit">Sign OUT_</button>
     </form>
   )
 }
